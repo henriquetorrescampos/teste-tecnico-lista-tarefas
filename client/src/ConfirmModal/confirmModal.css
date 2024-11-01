@@ -1,0 +1,48 @@
+.modal-overlay {
+  position: fixed;
+  top: 0; /* Alinhamento ao topo */
+  left: 0; /* Alinhamento à esquerda */
+  width: 100%; /* Largura total da tela */
+  height: 100%; /* Altura total da tela */
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  z-index: 1000; /* Garante que o modal esteja acima de outros elementos */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 400px; /* Largura do conteúdo do modal, ajuste conforme necessário */
+  gap: 10px;
+}
+
+.button-nao {
+  color: white;
+  background-color: red;
+  border-radius: 8px;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 6px;
+  cursor: pointer;
+}
+.button-sim {
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  background-color: green;
+  border-radius: 8px;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.modal-content p {
+  align-self: center;
+  font-weight: bold;
+  font-size: 17px;
+}

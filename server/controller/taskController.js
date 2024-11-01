@@ -16,7 +16,8 @@ export const create = async (request, response) => {
 
     const savedTask = await newTask.save();
 
-    response.status(201).json(savedTask);
+    // response.status(201).json(savedTask);
+    response.status(201).json({ message: "Tarefa criada com sucesso." });
   } catch (error) {
     response.status(500).json({ errorMessage: error.message });
   }
@@ -49,7 +50,7 @@ export const update = async (request, response) => {
       { new: true }
     );
 
-    response.status(200).json(updatedTask);
+    response.status(200).json({ message: "Tarefa editada." });
   } catch (error) {
     response.status(500).json({ errorMessage: error.message });
   }
