@@ -60,6 +60,10 @@ export const deleteTask = async (request, response) => {
     const id = request.params.id;
     const deletedTask = await Task.findByIdAndDelete(id);
 
+    if (!deleteTask) {
+      return response.status(404).json({ message: "Tarefa não encontrada" });
+    }
+
     response.status(200).json({ message: "Tarefa deletada" });
   } catch (error) {
     response.status(500).json({ errorMessage: error.message });

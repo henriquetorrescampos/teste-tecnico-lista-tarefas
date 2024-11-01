@@ -3,9 +3,16 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import router from "./routes/createRoute.js";
+import cors from "cors";
 
 dotenv.config(); // Load .env variables
 const app = express(); // Start the express
+
+app.use(
+  cors({
+    origin: "http://localhost:3000", // will allow requests from react app running on localhost:3000
+  })
+);
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 7000;
