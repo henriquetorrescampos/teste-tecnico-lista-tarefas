@@ -57,7 +57,7 @@ Sistema de Lista de Tarefas, aplicação web que permite o cadastro, visualizaç
 
 - **Node.js** (versão LTS recomendada)
 - **MongoDB** (local ou remoto)
-- **npm** ou **yarn**
+- **npm**
 
 ## Instalação e Execução
 
