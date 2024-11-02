@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./tasks.css";
 
 const Tasks = () => {
@@ -16,7 +15,10 @@ const Tasks = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/tasks");
+        process.env.MONGO_URI;
+        const response = await axios.get(
+          "https://lista-tarefas-oyvq5w9ty-henriquetcampos-projects.vercel.app/api/tasks"
+        );
         setTasks(response.data);
         setTasks(
           response.data.map((task) => ({
@@ -48,7 +50,7 @@ const Tasks = () => {
   const handleSaveClick = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/update/task/${editTaskId}`,
+        `https://lista-tarefas-oyvq5w9ty-henriquetcampos-projects.vercel.app/api/update/task/${editTaskId}`,
         editedTask
       );
       setTasks((prev) =>
@@ -64,7 +66,7 @@ const Tasks = () => {
   const deleteTask = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:8000/api/delete/task/${taskToDelete}`
+        `https://lista-tarefas-oyvq5w9ty-henriquetcampos-projects.vercel.app/api/delete/task/${taskToDelete}`
       );
       setTasks((previousTask) =>
         previousTask.filter((task) => task._id !== taskToDelete)

@@ -10,21 +10,20 @@ const app = express(); // Start the express
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // will allow requests from react app running on localhost:3000
+    origin: process.env.FRONTEND_URL,
   })
 );
 app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 7000;
-const MONGOURL = process.env.MONGO_URL;
+const PORT = process.env.PORT || 3000;
+const MONGOURL = process.env.MONGO_URI;
 
 mongoose
   .connect(MONGOURL)
   .then(() => {
     console.log("DB connected!");
-
     app.listen(PORT, () => {
-      console.log(`Server is running ${PORT}`);
+      console.log(`Server running port ${PORT}`);
     });
   })
   .catch((error) => console.log(`Got an error in connection, ${error}`));

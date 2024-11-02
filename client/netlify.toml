@@ -1,0 +1,4 @@
+[[ redirects ]]
+from = "/*"
+to = "/client/index.js"
+status = 200
