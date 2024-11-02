@@ -3,6 +3,7 @@ import "./addTask.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import moment from "moment";
 
 const AddTask = () => {
   const [task, setTask] = useState({
@@ -17,11 +18,17 @@ const AddTask = () => {
     const { name, value } = event.target; //name represents input name; value represents input value
     console.log(name, value);
 
-    setTask({ ...task, [name]: value });
+    if (name === "due_data") {
+      const formattedDate = moment(value).format("YYYY-dcz");
+      setTask({ ...task, [name]: formattedDate });
+    } else {
+      setTask({ ...task, [name]: value });
+    }
   };
 
   const submitForm = async (event) => {
     event.preventDefault();
+    console.log("Dados enviados:", task);
 
     try {
       const response = await axios.post(
@@ -61,6 +68,7 @@ const AddTask = () => {
           <label htmlFor="task-cost">Custo da tarefa:</label>
           <input
             type="number"
+            step="0.01"
             id="cost"
             onChange={inputHandle}
             name="cost"

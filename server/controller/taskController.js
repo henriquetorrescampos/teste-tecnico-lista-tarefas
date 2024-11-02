@@ -2,6 +2,8 @@ import Task from "../model/taskModel.js";
 
 export const create = async (request, response) => {
   try {
+    console.log("Dados recebidos backend", request.body);
+
     const id_display_order = await Task.findOne().sort({ display_order: -1 });
     const next_id_display_order = id_display_order // novo numero garantindo unique number
       ? id_display_order.display_order + 1
@@ -9,7 +11,7 @@ export const create = async (request, response) => {
 
     const newTask = new Task({
       task_name: request.body.task_name,
-      cost: request.body.cost,
+      cost: parseFloat(request.body.cost),
       due_date: request.body.due_date,
       display_order: next_id_display_order,
     });

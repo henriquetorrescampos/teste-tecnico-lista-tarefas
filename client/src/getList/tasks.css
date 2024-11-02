@@ -6,6 +6,26 @@
     border-radius: 10px;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.0);
 }
+.table-custom {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-collapse: collapse;
+}
+.table-custom th,
+.table-custom td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border: 1px solid #dee2e6;
+}
+
+/* Estilo para o cabeçalho */
+.table-custom thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    background-color: #f8f9fa;
+}
 .task-table table {
     width: 100%;
     margin-top: 30px;
@@ -21,11 +41,16 @@
     vertical-align: middle;
 }
 .yellow {
-    background-color: yellow !important;
+    background-color: yellow ;
+    font-weight: 600;
 }
 .action-buttons button {
     margin: 0 4px;
 }
 .icon-spacing {
     margin-left: 8px;
+ 
+}
+.task-table table.table-bordered tbody tr.yellow {
+    background-color: yellow;
 }
