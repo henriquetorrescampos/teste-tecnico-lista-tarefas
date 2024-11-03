@@ -89,15 +89,15 @@ const Tasks = () => {
 
   const formatDateForInput = (date) => {
     const d = new Date(date);
-    return d.toISOString().split("T")[0]; // Para input do tipo date
+    return d.toISOString().split("T")[0];
   };
 
   const formatDateForDisplay = (date) => {
     const d = new Date(date);
     const day = String(d.getDate()).padStart(2, "0");
-    const month = String(d.getMonth() + 1).padStart(2, "0"); // Mês começa em 0
+    const month = String(d.getMonth() + 1).padStart(2, "0");
     const year = d.getFullYear();
-    return `${day}-${month}-${year}`; // Retorna a data no formato DD-MM-YYYY
+    return `${day}/${month}/${year}`;
   };
 
   const moveTask = (index, direction) => {
@@ -148,6 +148,7 @@ const Tasks = () => {
                       onChange={handleInputChange}
                     />
                   </td>
+
                   <td className="pointer">
                     <input
                       type="date"
@@ -156,6 +157,7 @@ const Tasks = () => {
                       onChange={handleInputChange}
                     />
                   </td>
+
                   <td className="action-buttons">
                     <button
                       type="button"
@@ -182,7 +184,9 @@ const Tasks = () => {
                       maximumFractionDigits: 2,
                     })}
                   </td>
+
                   <td>{formatDateForDisplay(task.due_date)}</td>
+
                   <td className="action-buttons">
                     <button
                       type="button"
@@ -191,6 +195,7 @@ const Tasks = () => {
                     >
                       <i className="fa-solid fa-pen-to-square"></i>
                     </button>
+
                     <button
                       type="button"
                       className="btn btn-danger"
@@ -198,6 +203,7 @@ const Tasks = () => {
                     >
                       <i className="fa-solid fa-trash"></i>
                     </button>
+
                     <button
                       type="button"
                       className="btn btn-warning"
@@ -206,6 +212,7 @@ const Tasks = () => {
                     >
                       <i className="fa-solid fa-arrow-up"></i>
                     </button>
+
                     <button
                       type="button"
                       className="btn btn-light"
