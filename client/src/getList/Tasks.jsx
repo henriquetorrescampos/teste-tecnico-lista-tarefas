@@ -18,6 +18,7 @@ const Tasks = () => {
         const response = await axios.get(
           `${process.env.REACT_APP_URL_VERCEL}/api/tasks`
         );
+
         setTasks(response.data);
         setTasks(
           response.data.map((task) => ({
@@ -92,16 +93,6 @@ const Tasks = () => {
     return adjustedDate.toISOString().split("T")[0];
   };
 
-  const onDragEnd = (result) => {
-    if (!result.destination) return;
-
-    const updatedTasks = Array.from(tasks);
-    const [movedTask] = updatedTasks.splice(result.source.index, 1);
-    updatedTasks.splice(result.destination.index, 0, movedTask);
-
-    setTasks(updatedTasks);
-  };
-
   const moveTask = (index, direction) => {
     const updatedTasks = [...tasks];
     const targetIndex = index + direction;
@@ -118,6 +109,7 @@ const Tasks = () => {
       <Link to={"/add"} type="button" className="btn btn-primary">
         Nova Tarefa
         <i className="fa-solid fa-plus icon-spacing"></i>
+        {console.log(process.env.REACT_APP_URL_VERCEL)}
       </Link>
 
       <table className="table-custom ">
