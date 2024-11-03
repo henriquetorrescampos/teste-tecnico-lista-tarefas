@@ -30,6 +30,6 @@ mongoose
   })
   .catch((error) => console.log(`Got an error in connection, ${error}`));
 
-// app.use("/api", router);
+app.use("/api", router);
 
 export default app;
