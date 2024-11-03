@@ -16,7 +16,7 @@ const Tasks = () => {
     const fetchTasks = async () => {
       try {
         const response = await axios.get(
-          `https://listatarefass.vercel.app/api/tasks`
+          `https://listatarefass.vercel.app/tasks`
         );
 
         setTasks(response.data);
@@ -50,7 +50,7 @@ const Tasks = () => {
   const handleSaveClick = async () => {
     try {
       const response = await axios.put(
-        `https://listatarefass.vercel.app/api/update/task/${editTaskId}`,
+        `https://listatarefass.vercel.app/update/task/${editTaskId}`,
         editedTask
       );
       setTasks((prev) =>
@@ -66,7 +66,7 @@ const Tasks = () => {
   const deleteTask = async () => {
     try {
       const response = await axios.delete(
-        `https://listatarefass.vercel.app/api/delete/task/${taskToDelete}`
+        `https://listatarefass.vercel.app/delete/task/${taskToDelete}`
       );
       setTasks((previousTask) =>
         previousTask.filter((task) => task._id !== taskToDelete)
