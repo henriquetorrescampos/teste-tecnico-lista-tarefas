@@ -32,6 +32,9 @@ mongoose
   })
   .catch((error) => console.log(`Got an error in connection, ${error}`));
 
+app.get("/", (request, response) => {
+  response.send("Bem vindo ao backend da lista de tarefas");
+});
 app.use("/api", router);
 
 export default app;
