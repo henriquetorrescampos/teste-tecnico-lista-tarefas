@@ -10,9 +10,12 @@ const app = express(); // Start the express
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: ["https://deploy-mern-frontend.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true,
   })
 );
+
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3000;
