@@ -3,17 +3,19 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import router from "./routes/createRoute.js";
+import cors from "cors";
 
 dotenv.config(); // Load .env variables
+
 const app = express(); // Start the express
 
-// app.use(
-//   cors({
-//     origin: "https://teste-tecnico-lista-tarefas-front.vercel.app",
-//     methods: ["POST", "GET", "PUT", "DELETE"],
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: "https://listatarefass.vercel.app/",
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 app.use(bodyParser.json());
 
