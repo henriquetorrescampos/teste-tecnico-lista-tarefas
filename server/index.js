@@ -18,17 +18,19 @@ app.use(
 
 app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 const MONGOURL = process.env.MONGO_URI;
 
 mongoose
   .connect(MONGOURL)
   .then(() => {
     console.log("DB connected!");
-    app.listen(PORT, () => {
-      console.log(`Server running port ${PORT}`);
-    });
+    // app.listen(PORT, () => {
+    //   console.log(`Server running port ${PORT}`);
+    // });
   })
   .catch((error) => console.log(`Got an error in connection, ${error}`));
 
 app.use("/api", router);
+
+export default app;
