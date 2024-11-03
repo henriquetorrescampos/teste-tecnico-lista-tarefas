@@ -5,13 +5,13 @@ import dotenv from "dotenv";
 import router from "./routes/createRoute.js";
 import cors from "cors";
 
-dotenv.config(); // Load .env variables
+dotenv.config(); // Carregar variáveis do .env
 
-const app = express(); // Start the express
+const app = express(); // Iniciar o express
 
 app.use(
   cors({
-    origin: "https://teste-tecnico-lista-tarefas-front.vercel.app/",
+    origin: "https://teste-tecnico-lista-tarefas-front.vercel.app",
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
@@ -27,14 +27,15 @@ mongoose
   .then(() => {
     console.log("DB connected!");
     app.listen(PORT, () => {
-      console.log(`Server running port ${PORT}`);
+      console.log(`Server running on port ${PORT}`);
     });
   })
-  .catch((error) => console.log(`Got an error in connection, ${error}`));
+  .catch((error) => console.log(`Error connecting to the database: ${error}`));
 
 app.get("/", (request, response) => {
-  response.send("Bem vindo ao backend da lista de tarefas");
+  response.send("Bem-vindo ao backend da lista de tarefas");
 });
+
 app.use("/api", router);
 
 export default app;
