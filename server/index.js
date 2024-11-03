@@ -10,7 +10,7 @@ const app = express(); // Start the express
 
 app.use(
   cors({
-    origin: ["https://listatarefass.vercel.app/"],
+    origin: ["https://teste-tecnico-lista-tarefas-front.vercel.app/api/tasks"],
     methods: ["POST", "GET"],
     credentials: true,
   })
