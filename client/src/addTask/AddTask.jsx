@@ -16,7 +16,6 @@ const AddTask = () => {
 
   const inputHandle = (event) => {
     const { name, value } = event.target; //name represents input name; value represents input value
-    console.log(name, value);
 
     if (name === "due_data") {
       const formattedDate = moment(value).format("YYYY-dcz");
@@ -28,7 +27,6 @@ const AddTask = () => {
 
   const submitForm = async (event) => {
     event.preventDefault();
-    console.log("Dados enviados:", task);
 
     try {
       const response = await axios.post(

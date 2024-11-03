@@ -19,7 +19,6 @@ const Tasks = () => {
           "https://teste-tecnico-lista-tarefas-back.vercel.app/api/tasks"
         );
 
-        // Atualize o estado apenas uma vez
         setTasks(
           response.data.map((task) => ({
             ...task,
@@ -28,6 +27,7 @@ const Tasks = () => {
         );
       } catch (error) {
         console.log("Error while fetching tasks", error);
+        toast.error("Erro ao buscar as tarefas", { position: "top-right" });
       }
     };
 
@@ -60,6 +60,7 @@ const Tasks = () => {
       setEditTaskId(null);
     } catch (error) {
       console.log("Error while saving task", error);
+      toast.error("Erro ao salvar a tarefa", { position: "top-right" });
     }
   };
 
@@ -74,6 +75,7 @@ const Tasks = () => {
       toast.success(response.data.message, { position: "top-right" });
     } catch (error) {
       console.log("Error while deleting task", error);
+      toast.error("Erro ao deletar a tarefa", { position: "top-right" });
     } finally {
       setIsModalOpen(false);
       setTaskToDelete(null);
@@ -86,11 +88,16 @@ const Tasks = () => {
   };
 
   const formatDateForInput = (date) => {
-    const adjustedDate = new Date(date);
-    adjustedDate.setMinutes(
-      adjustedDate.getMinutes() + adjustedDate.getTimezoneOffset()
-    );
-    return adjustedDate.toISOString().split("T")[0];
+    const d = new Date(date);
+    return d.toISOString().split("T")[0]; // Para input do tipo date
+  };
+
+  const formatDateForDisplay = (date) => {
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = String(d.getMonth() + 1).padStart(2, "0"); // Mês começa em 0
+    const year = d.getFullYear();
+    return `${day}-${month}-${year}`; // Retorna a data no formato DD-MM-YYYY
   };
 
   const moveTask = (index, direction) => {
@@ -111,7 +118,7 @@ const Tasks = () => {
         <i className="fa-solid fa-plus icon-spacing"></i>
       </Link>
 
-      <table className="table-custom ">
+      <table className="table-custom">
         <thead>
           <tr>
             <th scope="col">Nome da Tarefa</th>
@@ -122,7 +129,7 @@ const Tasks = () => {
         </thead>
         <tbody>
           {tasks.map((task, index) => (
-            <tr key={task._id} className={task.cost >= 1000 && "yellow"}>
+            <tr key={task._id} className={task.cost >= 1000 ? "yellow" : ""}>
               {editTaskId === task._id ? (
                 <>
                   <td>
@@ -175,7 +182,7 @@ const Tasks = () => {
                       maximumFractionDigits: 2,
                     })}
                   </td>
-                  <td>{new Date(task.due_date).toLocaleDateString()}</td>
+                  <td>{formatDateForDisplay(task.due_date)}</td>
                   <td className="action-buttons">
                     <button
                       type="button"
@@ -191,7 +198,6 @@ const Tasks = () => {
                     >
                       <i className="fa-solid fa-trash"></i>
                     </button>
-
                     <button
                       type="button"
                       className="btn btn-warning"
@@ -202,7 +208,7 @@ const Tasks = () => {
                     </button>
                     <button
                       type="button"
-                      className="btn btn-warning"
+                      className="btn btn-light"
                       onClick={() => moveTask(index, 1)}
                       disabled={index === tasks.length - 1}
                     >
