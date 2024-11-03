@@ -32,7 +32,7 @@ const AddTask = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_URL_VERCEL}/api/newTask`,
+        `https://listatarefass.vercel.app/api/newTask`,
         task
       );
       toast.success(response.data.message, { position: "top-right" });

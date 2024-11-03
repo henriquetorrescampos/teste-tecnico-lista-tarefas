@@ -16,7 +16,7 @@ const Tasks = () => {
     const fetchTasks = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_URL_VERCEL}/api/tasks`
+          `https://listatarefass.vercel.app/api/tasks`
         );
 
         setTasks(response.data);
@@ -50,7 +50,7 @@ const Tasks = () => {
   const handleSaveClick = async () => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_URL_VERCEL}/api/update/task/${editTaskId}`,
+        `https://listatarefass.vercel.app/api/update/task/${editTaskId}`,
         editedTask
       );
       setTasks((prev) =>
@@ -66,7 +66,7 @@ const Tasks = () => {
   const deleteTask = async () => {
     try {
       const response = await axios.delete(
-        `${process.env.REACT_APP_URL_VERCEL}/api/delete/task/${taskToDelete}`
+        `https://listatarefass.vercel.app/api/delete/task/${taskToDelete}`
       );
       setTasks((previousTask) =>
         previousTask.filter((task) => task._id !== taskToDelete)
@@ -109,7 +109,6 @@ const Tasks = () => {
       <Link to={"/add"} type="button" className="btn btn-primary">
         Nova Tarefa
         <i className="fa-solid fa-plus icon-spacing"></i>
-        {console.log(process.env.REACT_APP_URL_VERCEL)}
       </Link>
 
       <table className="table-custom ">
