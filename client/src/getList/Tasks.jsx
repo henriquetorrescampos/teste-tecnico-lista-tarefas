@@ -15,9 +15,8 @@ const Tasks = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        process.env.MONGO_URI;
         const response = await axios.get(
-          "https://lista-tarefas-oyvq5w9ty-henriquetcampos-projects.vercel.app/api/tasks"
+          `${process.env.REACT_APP_URL_VERCEL}/api/tasks`
         );
         setTasks(response.data);
         setTasks(
@@ -50,7 +49,7 @@ const Tasks = () => {
   const handleSaveClick = async () => {
     try {
       const response = await axios.put(
-        `https://lista-tarefas-oyvq5w9ty-henriquetcampos-projects.vercel.app/api/update/task/${editTaskId}`,
+        `${process.env.REACT_APP_URL_VERCEL}/api/update/task/${editTaskId}`,
         editedTask
       );
       setTasks((prev) =>
@@ -66,7 +65,7 @@ const Tasks = () => {
   const deleteTask = async () => {
     try {
       const response = await axios.delete(
-        `https://lista-tarefas-oyvq5w9ty-henriquetcampos-projects.vercel.app/api/delete/task/${taskToDelete}`
+        `${process.env.REACT_APP_URL_VERCEL}/api/delete/task/${taskToDelete}`
       );
       setTasks((previousTask) =>
         previousTask.filter((task) => task._id !== taskToDelete)
@@ -107,7 +106,7 @@ const Tasks = () => {
     const updatedTasks = [...tasks];
     const targetIndex = index + direction;
 
-    if (targetIndex < 0 || targetIndex >= updatedTasks.length) return; // Prevent out of bounds
+    if (targetIndex < 0 || targetIndex >= updatedTasks.length) return;
 
     const [movedTask] = updatedTasks.splice(index, 1);
     updatedTasks.splice(targetIndex, 0, movedTask);
@@ -201,20 +200,20 @@ const Tasks = () => {
                     >
                       <i className="fa-solid fa-trash"></i>
                     </button>
-                    {/* Botões para mover a tarefa */}
+
                     <button
                       type="button"
                       className="btn btn-warning"
-                      onClick={() => moveTask(index, -1)} // Move para cima
-                      disabled={index === 0} // Desabilita se for o primeiro item
+                      onClick={() => moveTask(index, -1)}
+                      disabled={index === 0}
                     >
                       <i className="fa-solid fa-arrow-up"></i>
                     </button>
                     <button
                       type="button"
                       className="btn btn-warning"
-                      onClick={() => moveTask(index, 1)} // Move para baixo
-                      disabled={index === tasks.length - 1} // Desabilita se for o último item
+                      onClick={() => moveTask(index, 1)}
+                      disabled={index === tasks.length - 1}
                     >
                       <i className="fa-solid fa-arrow-down"></i>
                     </button>

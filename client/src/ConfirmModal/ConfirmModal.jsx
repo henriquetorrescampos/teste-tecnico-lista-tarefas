@@ -1,5 +1,5 @@
 import React from "react";
-import "./confirmModal.css"; // Estilização do modal, se necessário
+import "./confirmModal.css";
 
 const ConfirmModal = ({ isOpen, onClose, onConfirm }) => {
   if (!isOpen) return null; // Não renderiza nada se não estiver aberto

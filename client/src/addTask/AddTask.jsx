@@ -32,7 +32,7 @@ const AddTask = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/newTask`,
+        `${process.env.REACT_APP_URL_VERCEL}/api/newTask`,
         task
       );
       toast.success(response.data.message, { position: "top-right" });
