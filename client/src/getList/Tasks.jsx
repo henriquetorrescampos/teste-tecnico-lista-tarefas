@@ -16,10 +16,10 @@ const Tasks = () => {
     const fetchTasks = async () => {
       try {
         const response = await axios.get(
-          `https://teste-tecnico-lista-tarefas-back.vercel.app/api/tasks`
+          "https://teste-tecnico-lista-tarefas-back.vercel.app/api/tasks"
         );
 
-        setTasks(response.data);
+        // Atualize o estado apenas uma vez
         setTasks(
           response.data.map((task) => ({
             ...task,
