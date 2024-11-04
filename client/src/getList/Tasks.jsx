@@ -115,7 +115,7 @@ const Tasks = () => {
 
   return (
     <div className="task-table">
-      <Link to={"/add"} type="button" className="btn btn-primary">
+      <Link to={"/add"} type="button" className="btn btn-primary mouse-pointer">
         Nova Tarefa
         <i className="fa-solid fa-plus icon-spacing"></i>
       </Link>
@@ -151,7 +151,7 @@ const Tasks = () => {
                     />
                   </td>
 
-                  <td className="pointer">
+                  <td>
                     <input
                       type="date"
                       name="due_date"
@@ -192,7 +192,7 @@ const Tasks = () => {
                   <td className="action-buttons">
                     <button
                       type="button"
-                      className="btn btn-info"
+                      className="btn btn-info mouse-pointer"
                       onClick={() => handleEditClick(task)}
                     >
                       <i className="fa-solid fa-pen-to-square"></i>
@@ -200,7 +200,7 @@ const Tasks = () => {
 
                     <button
                       type="button"
-                      className="btn btn-danger"
+                      className="btn btn-danger mouse-pointer"
                       onClick={() => openModal(task._id)}
                     >
                       <i className="fa-solid fa-trash"></i>
@@ -208,7 +208,7 @@ const Tasks = () => {
 
                     <button
                       type="button"
-                      className="btn btn-warning"
+                      className="btn btn-warning mouse-pointer"
                       onClick={() => moveTask(index, -1)}
                       disabled={index === 0}
                     >
@@ -217,7 +217,7 @@ const Tasks = () => {
 
                     <button
                       type="button"
-                      className="btn btn-light"
+                      className="btn btn-light mouse-pointer"
                       onClick={() => moveTask(index, 1)}
                       disabled={index === tasks.length - 1}
                     >

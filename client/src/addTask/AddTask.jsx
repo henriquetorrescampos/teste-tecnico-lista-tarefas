@@ -44,7 +44,11 @@ const AddTask = () => {
   return (
     <div className="add-task">
       <form className="add-task-form" onSubmit={submitForm}>
-        <Link to={"/"} type="button" className="btn btn-secondary">
+        <Link
+          to={"/"}
+          type="button"
+          className="btn btn-secondary mouse-pointer"
+        >
           <i class="fa-solid fa-backward icon-spacing"></i>
           Voltar
         </Link>
@@ -53,6 +57,7 @@ const AddTask = () => {
         <div className="input-group">
           <label htmlFor="name-task">Nome da tarefa:</label>
           <input
+            className="mouse-pointer"
             type="text"
             id="task_name"
             onChange={inputHandle}
@@ -65,6 +70,7 @@ const AddTask = () => {
         <div className="input-group">
           <label htmlFor="task-cost">Custo da tarefa:</label>
           <input
+            className="mouse-pointer"
             type="number"
             step="0.01"
             id="cost"
@@ -78,6 +84,7 @@ const AddTask = () => {
         <div className="input-group">
           <label htmlFor="data-limite">Data limite da tarefa:</label>
           <input
+            className="mouse-pointer"
             type="date"
             id="due_date"
             onChange={inputHandle}
@@ -88,7 +95,7 @@ const AddTask = () => {
         </div>
 
         <div className="input-group">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary mouse-pointer">
             Adicionar
           </button>
         </div>
