@@ -101,13 +101,15 @@ const Tasks = () => {
   };
 
   const moveTask = (index, direction) => {
-    const updatedTasks = [...tasks];
     const targetIndex = index + direction;
 
-    if (targetIndex < 0 || targetIndex >= updatedTasks.length) return;
+    if (targetIndex < 0 || targetIndex >= tasks.length) return;
+
+    const updatedTasks = [...tasks];
 
     const [movedTask] = updatedTasks.splice(index, 1);
     updatedTasks.splice(targetIndex, 0, movedTask);
+
     setTasks(updatedTasks);
   };
 
