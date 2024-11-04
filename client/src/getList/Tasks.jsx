@@ -110,7 +110,7 @@ const Tasks = () => {
     const [movedTask] = updatedTasks.splice(index, 1);
     updatedTasks.splice(targetIndex, 0, movedTask);
 
-    setTasks(updatedTasks);
+    setTasks([...updatedTasks]);
   };
 
   return (
