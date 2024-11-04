@@ -1,10 +1,10 @@
 .task-table {
-    width: 60%;
-    margin: 50px auto;
+    width: 90%;
+    margin: 20px auto;
     background-color: white;
-    padding: 50px;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.0);
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
 }
 .table-custom {
     width: 100%;
@@ -15,12 +15,12 @@
 }
 .table-custom th,
 .table-custom td {
-    padding: 0.75rem;
+    padding: 0.5rem;
     vertical-align: top;
     border: 1px solid #dee2e6;
 }
 
-/* Estilo para o cabeçalho */
+
 .table-custom thead th {
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6;
@@ -28,7 +28,7 @@
 }
 .task-table table {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .task-table table thead th{
     background-color: darkcyan;
@@ -45,7 +45,7 @@
     font-weight: 600;
 }
 .action-buttons button {
-    margin: 0 4px;
+    margin: 2px;
 }
 .icon-spacing {
     margin-left: 8px;
@@ -53,4 +53,42 @@
 }
 .task-table table.table-bordered tbody tr.yellow {
     background-color: yellow;
+}
+
+@media (max-width: 768px) {
+    .task-table {
+        padding: 15px;
+    }
+
+    .table-custom th,
+    .table-custom td {
+        padding: 0.4rem;
+        font-size: 12px;
+    }
+
+    .action-buttons button {
+        margin: 1px;
+    }
+    .task-table {
+        overflow-x: auto;
+    }
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .task-table {
+        width: 100%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    .table-custom th,
+    .table-custom td {
+        padding: 0.3rem;
+        font-size: 10px;
+    }
 }
